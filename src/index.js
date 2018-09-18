@@ -1,15 +1,14 @@
+import {render} from 'react-dom'
 import React from 'react'
-import { render } from 'react-dom'
-import App from './Components/App'
-import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import rootReducer from './reducers'
+import { Provider } from 'react-redux'
+import App from './components/App'
 
-const store = createStore(rootReducer)
+// const store = createStore(todos, /* preloadedState, */
+//    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// )
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+    <App/>,
   document.getElementById('root')
 )

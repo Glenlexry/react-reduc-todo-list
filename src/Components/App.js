@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import TodoList from './TodoList';
+import AddTodo from './AddTodo'
+import TodoList from './TodoList'
 
 class App extends Component {
   constructor(props) {
@@ -8,41 +8,38 @@ class App extends Component {
 
     this.state = {
       input: '',
-      todoItems: [],
+      todos: []
     }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({
       input: event.target.value
     })
   }
 
-  handleClick(event) {
-    this.state.input !== '' ? (this.setState({
-      input: '',
-      todoItems: [...this.state.todoItems,this.state.input]
-    })) : null;
+  handleSubmit = (event) => {
     event.preventDefault();
-    document.querySelector('#input').focus();
+    this.setState({
+      input: '',
+      todos: [...this.state.todos,this.state.input]
+    })
   }
 
-  componentDidUpdate() {
-    console.log(this.state.todoItems);
-  }
 
   render() {
     return (
-      <div className="App">
-        <input type="text" id="input" onChange={this.handleChange} value={this.state.input}/>
-        <button onClick={this.handleClick} >Submit</button>
-        <TodoList todoItems={this.state.todoItems} />
+      <div>
+      <AddTodo
+      handleChange={this.handleChange}
+      handleSubmit={this.handleSubmit}
+      value={this.state.input}
+      />
+      <TodoList todos={this.state.todos} />
       </div>
     );
   }
+
 }
 
 export default App;
