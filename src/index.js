@@ -14,12 +14,20 @@ const addTodo = text => ({
   text
 })
 
+const onInputChange = () => ({
+  type: 'ON_INPUT_CHANGE'
+})
+
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TODO':
         return {
           input: state.input,
-          todos: action.text
+          todos: [action.text]
+        }
+    case 'ON_INPUT_CHANGE':
+        return {
+          input: state.value
         }
       break;
     default:

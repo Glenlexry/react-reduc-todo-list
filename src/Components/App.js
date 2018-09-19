@@ -13,10 +13,11 @@ class App extends Component {
   //   }
   // }
 
-  handleChange = (event) => {
+  handleChange = () => {
     // this.setState({
     //   input: event.target.value
     // })
+    this.props.dispatch({type: 'ON_INPUT_CHANGE'});
   }
 
   handleSubmit = (event) => {
@@ -25,6 +26,7 @@ class App extends Component {
     //   input: '',
     //   todos: [...this.state.todos,this.state.input]
     // })
+    this.props.dispatch({type: 'ADD_TODO'});
   }
 
 
